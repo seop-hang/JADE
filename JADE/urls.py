@@ -20,9 +20,11 @@ from web.views import homepage,tablepage,statisticspage,mappage
 from web.views import database_creater
 
 urlpatterns = [
-
     # path('admin/', admin.site.urls),
-    path('createdb/',database_creater.create_database),
+
+    # urls temporaires pour la création de base de données
+    # path('createdb/',database_creater.create_database),
+    # path('createlink/',database_creater.create_link),
 
     path('',homepage.home_render),
     path('home/',homepage.home_render),

@@ -13,3 +13,9 @@ class Decisions(models.Model):
     tf_nb_votant = models.IntegerField(verbose_name="Nb voix votant tour final")
     tf_nb_inscrit = models.IntegerField(verbose_name="Nb voix inscrits tour final")
     tf_ecart1 = models.IntegerField(verbose_name="Tour final, écart candidat 1 et 2")
+
+class Links(models.Model):
+    """ Le tableau de liens des décisions """
+    link=models.CharField(verbose_name="Lien de décision",max_length=64,blank=True,null=True)
+    numero=models.ForeignKey(verbose_name="Numéro de décision",to=Decisions,on_delete=models.CASCADE,
+                                 to_field="numero_dec")
