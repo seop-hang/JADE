@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
 
 def map_render(request):
-    return render(request,'map.html')
+    active_button="map"
+    context={"active_button":active_button}
+    return render(request,'map.html',context)

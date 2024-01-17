@@ -1,10 +1,54 @@
+{% extends 'common.html' %}
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Table</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+  {% endblock %}
 </head>
 <body>
-  <h2>Tableau</h2>
+{% block content %}
+  {#  title #}
+  <div class="container container-page-title">
+    <div class="page-title">Tableau des Décisions</div>
+  </div>
+
+  {#  table#}
+  <div class="container my-table-container text-center">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>N° décision</th>
+        <th>Solution</th>
+        <th>Article 38</th>
+        <th>Date</th>
+        <th>Année</th>
+        <th>Département</th>
+        <th>Circonscription</th>
+        <th>Nb exprimées</th>
+        <th>Nb votant</th>
+        <th>Nb inscrit</th>
+        <th>Nb écart</th>
+        <th>Lien décision</th>
+      </tr>
+      </thead>
+      <tbody>
+{#        {% for decision in decisions %}#}
+{#          <tr>#}
+{#            <td>decision.link</td>#}
+{#          </tr>#}
+{#        {% endfor %}#}
+{#      <tr>#}
+{#        <td>{{ decisions.numero_dec.link }}</td>#}
+{#      </tr>#}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
 </body>
 </html>

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>JADE</title>
+  <base href="/">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body>
+<div id="basecontainer" class="row">
+  <div id="navigation" class="col col-2">
+    <div id="logodiv">
+      <img id="logopic" src="{% static 'image/logophoto.png' %}" alt="logo">
+      <p id="logotitle">JADE</p>
+    </div>
+    <div id="navbar">
+      <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button class="nav-link {% if active_button == 'home' %}active{% endif %}" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+                  type="button" role="tab" aria-controls="v-pills-home" aria-selected="{% if active_button == 'home' %}true{% else %}false{% endif %}" onclick="switchPage(this)">Home
+          </button>
+          <button class="nav-link {% if active_button == 'table' %}active{% endif %}" id="v-pills-table-tab" data-bs-toggle="pill" data-bs-target="#v-pills-table"
+                  type="button" role="tab" aria-controls="v-pills-table" aria-selected="{% if active_button == 'table' %}true{% else %}false{% endif %}" onclick="switchPage(this)">Table
+          </button>
+          <button class="nav-link {% if active_button == 'map' %}active{% endif %}" id="v-pills-map-tab" data-bs-toggle="pill" data-bs-target="#v-pills-map"
+                  type="button" role="tab" aria-controls="v-pills-map" aria-selected="{% if active_button == 'map' %}true{% else %}false{% endif %}" onclick="switchPage(this)">Map
+          </button>
+          <button class="nav-link {% if active_button == 'maps' %}active{% endif %}" id="v-pills-maps-tab" data-bs-toggle="pill" data-bs-target="#v-pills-maps"
+                  type="button" role="tab" aria-controls="v-pills-maps" aria-selected="{% if active_button == 'maps' %}true{% else %}false{% endif %}" onclick="switchPage(this)">Multi-maps
+          </button>
+          <button class="nav-link {% if active_button == 'statistics' %}active{% endif %}" id="v-pills-statistics-tab" data-bs-toggle="pill" data-bs-target="#v-pills-statistics"
+                  type="button" role="tab" aria-controls="v-pills-statistics" aria-selected="{% if active_button == 'statistics' %}true{% else %}false{% endif %}" onclick="switchPage(this)">Statistics
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mainContent" class="col col-10">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+<script src="{% static 'jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

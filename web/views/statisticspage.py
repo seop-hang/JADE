@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
 
 def statistics_render(request):
-    return render(request,'statistics.html')
+    active_button="statistics"
+    context={"active_button":active_button}
+    return render(request,'statistics.html',context)
