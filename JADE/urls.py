@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import homepage,tablepage,statisticspage,mappage,mapspage
+from web.views import homepage, tablepage, statisticspage, mappage, mapspage
 from web.views import database_creater
 
 urlpatterns = [
@@ -26,14 +26,14 @@ urlpatterns = [
     # path('createdb/',database_creater.create_database),
     # path('createlink/',database_creater.create_link),
 
-    path('',homepage.home_render),
-    path('home/',homepage.home_render),
+    path('', homepage.home_render),
+    path('home/', homepage.home_render),
 
-    path('table/',tablepage.table_render),
+    path('table/', tablepage.table_render),
 
-    path('map/',mappage.map_render),
+    path('map/', mappage.map_render),
 
-    path('maps/',mapspage.maps_render),
+    path('maps/', mapspage.maps_render),
 
-    path('statistics/',statisticspage.statistics_render)
+    path('statistics/', statisticspage.statistics_render)
 ]

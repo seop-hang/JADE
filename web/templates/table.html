@@ -14,7 +14,66 @@
 {% block content %}
   {#  title #}
   <div class="container container-page-title">
-    <div class="page-title">Tableau des Décisions</div>
+    <div class="page-title">
+      Tableau des Décisions
+      <button type="button" class="btn btn-primary my-title-button" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Filtrage
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Vous pouez filtrer le tableau selon les critères suivants
+            :</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="my-filter-form" method="get" novalidate enctype="multipart/form-data">
+            <div class="mb-3 form-group">
+              <label for="solution_field" class="form-label">{{ form.solution.label }}</label>
+              <select class="form-control" id="solution_field" name="solution">
+                <option value=""></option>
+                {% for value in possible_solution_values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="article38_field" class="form-label">{{ form.article38.label }}</label>
+              <select class="form-control" id="article38_field" name="article38">
+                {% for value in possible_article38_values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="annee_field" class="form-label">{{ form.annee_election.label }}</label>
+              <select class="form-control" id="annee_field" name="annee_election">
+                <option value=""></option>
+                {% for value in possible_annee_values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="dep_field" class="form-label">{{ form.nom_dep.label }}</label>
+              <select class="form-control" id="dep_field" name="nom_dep">
+                <option value=""></option>
+                {% for value in possible_dep_values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abandonner</button>
+            <button type="submit" class="btn btn-primary">Valider</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   {#  table#}
@@ -37,18 +96,79 @@
       </tr>
       </thead>
       <tbody>
-{#        {% for decision in decisions %}#}
-{#          <tr>#}
-{#            <td>decision.link</td>#}
-{#          </tr>#}
-{#        {% endfor %}#}
-{#      <tr>#}
-{#        <td>{{ decisions.numero_dec.link }}</td>#}
-{#      </tr>#}
+      {% for decision in decisions %}
+        <tr>
+          <td>{{ decision.numero_dec.numero }}</td>
+          <td>{{ decision.solution }}</td>
+          <td>{{ decision.article38 }}</td>
+          <td>{{ decision.date_dec }}</td>
+          <td>{{ decision.annee_election }}</td>
+          <td>{{ decision.nom_dep }}</td>
+          <td>{{ decision.circonscription }}</td>
+          <td>{{ decision.tf_nb_exprimees }}</td>
+          <td>{{ decision.tf_nb_votant }}</td>
+          <td>{{ decision.tf_nb_inscrit }}</td>
+          <td>{{ decision.tf_ecart1 }}</td>
+          <td><a href="{{ decision.numero_dec.link }}">
+            <svg t="1705500529531" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                 p-id="952" width="30" height="30">
+              <path
+                d="M512 42.667A469.333 469.333 0 1 0 981.333 512 469.333 469.333 0 0 0 512 42.667z m251.307 242.56L640 658.56a25.6 25.6 0 0 1-48.64-16l101.973-310.187-385.066 219.094 154.666 42.666a25.6 25.6 0 0 1 14.08 10.24l116.48 170.667a25.6 25.6 0 1 1-42.666 29.013L439.68 642.133l-205.013-58.026a25.6 25.6 0 0 1-5.76-46.934L725.333 256a25.6 25.6 0 0 1 36.907 30.293z"
+                fill="#1296db" p-id="953"></path>
+            </svg>
+          </a></td>
+        </tr>
+      {% endfor %}
       </tbody>
     </table>
   </div>
 
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if decisions.has_previous %}
+        <li class="page-item">
+          <button class="page-link" onclick="changePage(1); return false;">&laquo; First</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link"
+             onclick="changePage({{ decisions.previous_page_number }}); return false;">Previous</button>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link">&laquo; First</a>
+        </li>
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+      {% endif %}
+
+      <li class="page-item"><a class="page-link">{{ decisions.number }} / {{ decisions.paginator.num_pages }}</a></li>
+
+      {% if decisions.has_next %}
+        <li class="page-item">
+          <button class="page-link"
+             onclick="changePage({{ decisions.next_page_number }}); return false;">Next</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link"
+             onclick="changePage({{ decisions.paginator.num_pages }}); return false;">Last &raquo;</button>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link">Next</a>
+        </li>
+        <li class="page-item disabled">
+          <a class="page-link">Last &raquo;</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
 {% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/table.js' %}"></script>
+{% endblock %}
+
 </body>
 </html>

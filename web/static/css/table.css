@@ -6,8 +6,13 @@
   padding-bottom: 2%;
   border-bottom: 2px solid #dee2e6;
   text-align: center;
+  font-weight: bolder;
 }
 
-.my-table-container{
-  /*margin-top: 2%;*/
+.my-table-container {
+  margin-top: 1.5%;
+}
+
+.my-title-button{
+  margin-left: 100px;
 }
