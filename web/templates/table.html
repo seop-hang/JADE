@@ -85,7 +85,7 @@
         <th>Solution</th>
         <th>Article 38</th>
         <th>Date</th>
-        <th>Année</th>
+        <th>Année d'élection</th>
         <th>Département</th>
         <th>Circonscription</th>
         <th>Nb exprimées</th>
@@ -168,6 +168,7 @@
 
 {% block js %}
   <script src="{% static 'js/table.js' %}"></script>
+  <script>history.replaceState({}, document.title, window.location.pathname);</script>
 {% endblock %}
 
 </body>

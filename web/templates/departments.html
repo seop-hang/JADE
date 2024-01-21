@@ -1,0 +1,75 @@
+{% extends 'common.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Map</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+  {% endblock %}
+</head>
+<body>
+{% block content %}
+  <div class="my-map-filter">
+    <form id="my-filter-form" method="get" novalidate enctype="multipart/form-data">
+      <div class="row">
+        <div class="mb-1 form-group col-md-6" style="padding-right:20px">
+          <label for="solution_field" class="form-label">{{ form.solution.label }}</label>
+          <select class="form-control" id="solution_field" name="solution">
+            <option value=""></option>
+            {% for value in possible_solution_values %}
+              <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-1 form-group col-md-6" style="padding-left:20px">
+          <label for="article38_field" class="form-label">{{ form.article38.label }}</label>
+          <select class="form-control" id="article38_field" name="article38">
+            {% for value in possible_article38_values %}
+              <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-1 form-group col-md-6" style="padding-right:20px">
+          <label for="annee_debut_field" class="form-label">{{ form.annee_debut.label }}</label>
+          <select class="form-control" id="annee_debut_field" name="annee_debut">
+            <option value=""></option>
+            {% for value in possible_annee_values %}
+              <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-1 form-group col-md-6" style="padding-left:20px">
+          <label for="annee_end_field" class="form-label">{{ form.annee_end.label }}</label>
+          <select class="form-control" id="annee_end_field" name="annee_end">
+            <option value=""></option>
+            {% for value in possible_annee_values %}
+              <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="margin-top:10px">Filtrer</button>
+    </form>
+  </div>
+  <div id="map"></div>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'js/map_init.js' %}"></script>
+  <script>
+    history.replaceState({}, document.title, window.location.pathname);
+    var mapData ={{ results|safe }};
+    document.addEventListener('DOMContentLoaded', function (){
+      console.log(mapData)
+      initEcharts(mapData)
+    })
+  </script>
+{% endblock %}
+</body>
+</html>

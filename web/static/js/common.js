@@ -9,10 +9,10 @@ function switchPage(button) {
       window.location.pathname = "/table/";
       break;
     case "v-pills-map-tab":
-      window.location.pathname = "/map/";
+      window.location.pathname = "/departments/";
       break;
     case "v-pills-maps-tab":
-      window.location.pathname = "/maps/";
+      window.location.pathname = "/circonscriptions/";
       break;
     case "v-pills-statistics-tab":
       window.location.pathname = "/statistics/";

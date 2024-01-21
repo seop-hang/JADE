@@ -41,5 +41,9 @@
   </div>
   {#  pour tabcontainer #}
 {% endblock %}
+
+{% block js %}
+  <script>history.replaceState({}, document.title, window.location.pathname);</script>
+{% endblock %}
 </body>
 </html>

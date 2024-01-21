@@ -23,8 +23,8 @@ def table_render(request):
 
     possible_solution_values = models.Decisions.objects.values_list('solution', flat=True).distinct()
     possible_article38_values = models.Decisions.objects.values_list('article38', flat=True).distinct()
-    possible_annee_values = models.Decisions.objects.values_list('annee_election', flat=True).distinct()
-    possible_dep_values = models.Decisions.objects.values_list('nom_dep', flat=True).distinct()
+    possible_annee_values = sorted(models.Decisions.objects.values_list('annee_election', flat=True).distinct())
+    possible_dep_values = sorted(models.Decisions.objects.values_list('nom_dep', flat=True).distinct())
 
     # obtenir les décisions
     decisions = models.Decisions.objects.all()
@@ -43,7 +43,6 @@ def table_render(request):
     except EmptyPage:
         current_page_decisions = paginator.page(paginator.num_pages)
 
-    current_url=request.get_full_path()
     res = {"active_button": active_button, "decisions": current_page_decisions, "form": form,
            "possible_solution_values": possible_solution_values,
            "possible_article38_values": possible_article38_values,

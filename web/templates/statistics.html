@@ -11,5 +11,10 @@
   {% endblock %}
 </head>
 <body>
+
+
+{% block js %}
+  <script>history.replaceState({}, document.title, window.location.pathname);</script>
+{% endblock %}
 </body>
 </html>

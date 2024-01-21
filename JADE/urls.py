@@ -31,9 +31,9 @@ urlpatterns = [
 
     path('table/', tablepage.table_render),
 
-    path('map/', mappage.map_render),
+    path('departments/', mappage.map_render),
 
-    path('maps/', mapspage.maps_render),
+    path('circonscriptions/', mapspage.maps_render),
 
     path('statistics/', statisticspage.statistics_render)
 ]
