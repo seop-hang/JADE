@@ -11,10 +11,103 @@
   {% endblock %}
 </head>
 <body>
-
+{% block content %}
+  <div id="graphic_container" class="row">
+    <div id="graphic1" class="col col-6"></div>
+    <div id="graphic2" class="col col-6"></div>
+  </div>
+{% endblock %}
 
 {% block js %}
-  <script>history.replaceState({}, document.title, window.location.pathname);</script>
+  <script src="{% static 'js/statistics.js' %}"></script>
+  <script>
+    history.replaceState({}, document.title, window.location.pathname);
+    var option1;
+    var option2;
+    option1 = {
+      title: {
+        text: 'Evolution de nombre des décisions',
+        left: 'center',
+        top: 'top',
+        textStyle: {
+          color: '#333',
+          fontSize: 16,
+          fontWeight: 'bold'
+        }
+      },
+      xAxis: {
+        name: "Année",
+        type: 'category',
+        data: {{ possible_annee_values|safe }}
+      },
+      yAxis: {
+        name: "Décisions",
+        type: 'value'
+      },
+      series: [
+        {
+          data: {{ annee_values|safe }},
+          type: 'line'
+        }
+      ],
+      tooltip: {
+        trigger: 'axis',
+        formatter: '{b}: {c}',
+        axisPointer: {
+          type: 'cross'
+        }
+      }
+    };
+    option2 = {
+      title: {
+        text: 'Répartition des solutions',
+        left: 'center',
+        top: 'top',
+        textStyle: {
+          color: '#333',
+          fontSize: 16,
+          fontWeight: 'bold'
+        }
+      },
+      xAxis: {
+        name: "Solution",
+        type: 'category',
+        data: {{ possible_solution_values|safe }},
+        axisLabel: {
+          rotate: -30,
+          interval: 0,
+          fontSize: 5,
+        },
+        nameTextStyle: {
+          fontSize: 11,
+          verticalAlign: 'middle'
+        }
+      },
+      yAxis: {
+        name: "Nombre",
+        type: 'value'
+      },
+      series: [
+        {
+          data: {{ solution_values|safe }},
+          type: 'bar',
+          itemStyle: {
+            color: function () {
+              return getRandomLightColor();
+            }
+          }
+        }
+      ],
+      tooltip: {
+        trigger: 'axis',
+        formatter: '{b}: {c}',
+        axisPointer: {
+          type: 'shadow'
+        }
+      }
+    };
+    initCharts()
+  </script>
 {% endblock %}
 </body>
 </html>
