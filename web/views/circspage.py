@@ -26,6 +26,8 @@ def circs_render(request):
 
     # filtrer
     filter_dict = {key: value for key, value in request.GET.items() if value and key != "page"}
+    if "nom_dep" not in filter_dict:
+        filter_dict['nom_dep']="ain"
     decisions = decisions.filter(**filter_dict)
 
     possible_circ_values = sorted(decisions.values_list('circonscription', flat=True).distinct())

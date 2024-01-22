@@ -1,10 +1,10 @@
 var ROOT_PATH = 'https://echarts.apache.org/examples';
 
 function getRandomColor() {
-  const letters = '0123456789ABCDEF';
+  const letters = 'ABCDEF';
   let color = '#';
   for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(Math.random() * 6)]; // 仅使用ABCDEF中的字符
   }
   return color;
 }

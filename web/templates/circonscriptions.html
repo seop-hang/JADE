@@ -43,6 +43,7 @@
 {% block js %}
   <script src="{% static 'js/circs.js' %}"></script>
   <script>
+    history.replaceState({}, document.title, window.location.pathname);
     var circsData ={{ possible_circ_values|safe }};
     var decisionData = {{ results|safe }};
     document.addEventListener('DOMContentLoaded', function () {
