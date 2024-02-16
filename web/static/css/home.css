@@ -29,13 +29,63 @@
 
 .nav-tabs .nav-link.active {
   color: #006699;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 /*pour navbar*/
 
 /*pour tabcontent*/
 .my-tab-content{
   margin-top: 2%;
-  text-align: center;
+  text-align: left;
 }
+
 /*pour tabcontent*/
+
+.section-container {
+  border: 2px solid #006699;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  max-width: 700px; 
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+
+#intro br {
+  margin-bottom: 8px; 
+  display: block; 
+  content: "\00a0";
+}
+
+h2 {
+  color: #1c2021;
+}
+
+.description-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  margin-bottom: 50px; 
+}
+
+.desc-img-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-image {
+  max-width: 45%; 
+  height: auto;
+  margin-bottom: 30px; 
+}
+
+@media (max-width: 600px) {
+  .desc-img-cont {
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+}

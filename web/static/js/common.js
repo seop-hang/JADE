@@ -1,3 +1,11 @@
+/**
+ * Ce fichier contient une fonction permettant de basculer entre les pages du projet JADE.
+ * La fonction prend en paramètre le bouton cliqué et redirige l'utilisateur vers la page correspondante en utilisant
+ * la propriété `window.location.pathname`.
+ *
+ * @param {HTMLElement} button - Le bouton cliqué pour basculer entre les pages.
+ */
+
 function switchPage(button) {
   let obj_button = $(button);
   let id = obj_button.attr("id");

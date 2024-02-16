@@ -1,3 +1,10 @@
+/**
+ * Ce fichier contient une fonction pour initialiser la visualisation cartographique des décisions.
+ * La fonction utilise ECharts pour créer une carte interactive avec des informations détaillées sur chaque département.
+ *
+ * @param {Array} mapData - Les données à afficher sur la carte, comprenant les décisions pour chaque département.
+ */
+
 var dataJson = "/static/geojson/departments.json";
 
 var Dom1 = '<span style="width:10px;height:10px;margin-right:5px;background-color:#fff94f;border-radius:50%;display:inline-block;"></span>'
@@ -7,12 +14,12 @@ var Dom4 = '<span style="width:10px;height:10px;margin-right:5px;background-colo
 
 function initEcharts(mapData) {
   $.get(dataJson, (json) => {
-    // 注册地图
+    // Enregistrement de la carte
     var myChart = echarts.init(document.querySelector('#map'));
     echarts.registerMap('france', json);
 
     var option = {
-      // 标题
+      // Titre
       title: [
         {
           "textStyle": {
@@ -35,7 +42,7 @@ function initEcharts(mapData) {
       },
 
 
-      // 地理坐标系组件
+      // Composant de coordonnées géographiques
       geo: {
         map: 'france',
         zoom: 1.2,
@@ -47,7 +54,7 @@ function initEcharts(mapData) {
         itemStyle: {
           areaColor: 'rgb(21,100,164)',
 
-          // 设置外层边框
+          // Paramètres de la bordure externe
           borderWidth: 1,
           borderColor: 'rgba(34,216,255, 1)',
           shadowColor: 'rgba(34,216,255, 1)', // #044B4D
@@ -59,16 +66,16 @@ function initEcharts(mapData) {
 
       series: [
         {
-          // 图表类型为地图
+          // Type de graphique : carte
           type: 'map',
 
-          // 使用 registerMap 注册的地图名称
+          // Utilisation de la carte enregistrée
           mapType: 'france',
 
-          // 地图缩放比例
+          // Zoom de la carte
           zoom: 1.2,
 
-          // 提示框
+          // Tooltip
           tooltip: {
             triggerOn: 'item',
             backgroundColor: 'rgba(8, 8, 8, .85)',
@@ -76,7 +83,7 @@ function initEcharts(mapData) {
               color: '#fff',
               fontSize: 16
             },
-            // 处理悬浮提示
+            // Gestion du tooltip
             formatter: (params) => {
               return (
                 params.data.name + '<br/>' +
@@ -88,15 +95,15 @@ function initEcharts(mapData) {
             }
           },
 
-          // 标签的样式
+          // Style des étiquettes
           label: {
 
-            // 标签在默认状态下的样式
+            // Style des étiquettes en état par défaut
             normal: {
               show: false
             },
 
-            // 标签在高亮状态下的样式
+            // Style des étiquettes en surbrillance
             emphasis: {
               show: true,
               color: '#04f13b',
@@ -104,22 +111,22 @@ function initEcharts(mapData) {
             }
           },
 
-          // 选中状态下的样式
+          // Style en état sélectionné
           select: {
-            // 标签在选中状态下的样式
+            // Style des étiquettes en état sélectionné
             label: {
               show: false
             },
 
-            // 选中状态下地图上区域块的样式
+            // Style des blocs de la carte en état sélectionné
             itemStyle: {
               areaColor: '#2b8bf3'
             }
           },
 
-          // 地图上区域块的样式
+          // Style des blocs de la carte
           itemStyle: {
-            // 默认状态下地图的颜色
+            // Style en état par défaut
             normal: {
               areaColor: '#083288',
               borderColor: 'rgba(0, 210, 255, 1)', // #00d2ff
@@ -127,7 +134,7 @@ function initEcharts(mapData) {
               color: '#fff'
             },
 
-            // 选中状态下地图的颜色
+            // Style en état de surbrillance
             emphasis: {
               areaColor: '#2b8bf3',
             }

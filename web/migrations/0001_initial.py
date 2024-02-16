@@ -5,7 +5,10 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
+    """
+    Database migration for creating 'Links' and 'Decisions' models.
+    """
+    
     initial = True
 
     dependencies = [

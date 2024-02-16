@@ -1,3 +1,13 @@
+/**
+ * Ce fichier contient les fonctions nécessaires à l'initialisation
+ * et à la configuration d'un graphique ECharts représentant l'évolution des élections législatives
+ * au niveau des circonscriptions. Il utilise les données fournies (solutionData, decisionData)
+ * pour générer un graphique dynamique.
+ *
+ * @param {Array} solutionData - Les données des solutions électorales.
+ * @param {Array} decisionData - Les données des décisions électorales par circonscription.
+ */
+
 var ROOT_PATH = 'https://echarts.apache.org/examples';
 
 function getRandomColor() {
@@ -9,8 +19,14 @@ function getRandomColor() {
   return color;
 }
 
+/**
+ * Initialise le graphique ECharts pour représenter l'évolution des élections législatives par circonscription.
+ *
+ * @param {Array} solutionData - Les données des solutions électorales.
+ * @param {Array} decisionData - Les données des décisions électorales par circonscription.
+ */
 function initCircsEcharts(solutionData, decisionData) {
-  // 注册地图
+  // Enregistre la carte
   var chartDom = document.getElementById('circs');
   var myChart = echarts.init(chartDom);
   var myData = decisionData.map(item => {
@@ -88,7 +104,7 @@ function initCircsEcharts(solutionData, decisionData) {
   console.log(myData)
 
   var option = {
-    // 标题
+    // titre
     title: {
       text: 'Evolution des élections législatives',
       subtext: '-- Circonscriptions --',
@@ -112,7 +128,7 @@ function initCircsEcharts(solutionData, decisionData) {
         center: ['50%', '50%'],
         selectedMode: 'single',
 
-        // 提示框
+        // Infobulle
         tooltip: {
           triggerOn: 'item',
           backgroundColor: 'rgba(8, 8, 8, .85)',
@@ -122,15 +138,15 @@ function initCircsEcharts(solutionData, decisionData) {
           },
         },
 
-        // 标签的样式
+        // Style des étiquettes
         label: {
 
-          // 标签在默认状态下的样式
+          // Style des étiquettes par défaut
           normal: {
             show: false
           },
 
-          // 标签在高亮状态下的样式
+          // Style des étiquettes en surbrillance
           emphasis: {
             show: true,
             color: '#010c04',
@@ -138,22 +154,22 @@ function initCircsEcharts(solutionData, decisionData) {
           }
         },
 
-        // 选中状态下的样式
+        // Style en mode sélection
         select: {
-          // 标签在选中状态下的样式
+          // Style des étiquettes en mode sélection
           label: {
             show: false
           },
 
-          // 选中状态下地图上区域块的样式
+          // Style des blocs de la carte en mode sélection
           itemStyle: {
             areaColor: '#2b8bf3'
           }
         },
 
-        // 地图上区域块的样式
+        // Style des blocs de la carte
         itemStyle: {
-          // 默认状态下地图的颜色
+          // Style des blocs de la carte par défaut
           normal: {
             areaColor: '#083288',
             borderColor: 'rgba(0, 210, 255, 1)', // #00d2ff
@@ -161,7 +177,7 @@ function initCircsEcharts(solutionData, decisionData) {
             color: '#fff'
           },
 
-          // 选中状态下地图的颜色
+          // Style des blocs de la carte en surbrillance
           emphasis: {
             itemStyle: {
               shadowBlur: 10,

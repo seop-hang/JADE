@@ -11,12 +11,27 @@ from django.conf import settings
 media_root = settings.MEDIA_ROOT
 
 def create_link(request):
+    """
+    Supprime tous les liens existants dans la base de données, puis appelle la fonction `corpus_parser` pour créer de nouveaux liens
+    en explorant les fichiers XML dans le dossier spécifié.
+    Args:
+        request: Objet de requête Django.
+    Returns:
+        HttpResponse: Réponse indiquant la réussite de la création des liens dans la base de données.
+    """
     # models.Links.objects.all().delete()
     path_corpus = os.path.join(media_root, 'Decisions_AN')
     corpus_parser(path_corpus)
     return HttpResponse("Bien créé la base de données !")
 
 def corpus_parser(path_corpus):
+    """
+    Explore les fichiers XML dans le dossier spécifié et crée des objets de modèle Django pour les liens entre les décisions.
+    Args:
+        path_corpus (str): Chemin du dossier contenant les fichiers XML.
+    Returns:
+        None
+    """
     if os.path.isfile(path_corpus):
         numero,url=file_parser(path_corpus)
         # decision_obj = models.Decisions.objects.filter(numero_dec=numero).first()
@@ -28,6 +43,13 @@ def corpus_parser(path_corpus):
             corpus_parser(new_path_corpus)
 
 def file_parser(path_file):
+    """
+    Analyse un fichier XML spécifique pour extraire le numéro et l'URL de la décision.
+    Args:
+        path_file (str): Chemin du fichier XML.
+    Returns:
+        Tuple[str, str]: Numéro et URL de la décision.
+    """
     tree = ET.parse(path_file)
     root = tree.getroot()
     meta=root.find('META')
@@ -39,6 +61,13 @@ def file_parser(path_file):
     return numero,url
 
 def create_database(request):
+    """
+    Lit le fichier CSV et crée des objets de modèle Django pour les décisions, en utilisant les liens créés précédemment.
+    Args:
+        request: Objet de requête Django.
+    Returns:
+        HttpResponse: Réponse indiquant la réussite de l'initialisation de la base de données.
+    """
     path_decisions = os.path.join(media_root, 'decisions.csv')
     csv_reader = csv.reader(open(path_decisions,encoding='utf-8'))
     # models.Decisions.objects.all().delete()
