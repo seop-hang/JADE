@@ -9,21 +9,24 @@
 function switchPage(button) {
   let obj_button = $(button);
   let id = obj_button.attr("id");
+  var newParams = '';
+  var cleanURL = window.location.protocol + "//" + window.location.host + window.location.pathname + newParams;
+  window.history.replaceState({}, document.title, cleanURL);
   switch (id) {
     case "v-pills-home-tab":
-      window.location.pathname = "/home/";
+      window.location.href = "/home/";
       break;
     case "v-pills-table-tab":
-      window.location.pathname = "/table/";
+      window.location.href = "/table/";
       break;
     case "v-pills-map-tab":
-      window.location.pathname = "/departments/";
+      window.location.href = "/departments/";
       break;
     case "v-pills-maps-tab":
-      window.location.pathname = "/circonscriptions/";
+      window.location.href = "/circonscriptions/";
       break;
     case "v-pills-statistics-tab":
-      window.location.pathname = "/statistics/";
+      window.location.href = "/statistics/";
       break;
   }
 }
