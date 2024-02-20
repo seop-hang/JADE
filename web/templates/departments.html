@@ -63,12 +63,16 @@
 {% block js %}
   <script src="{% static 'js/map_init.js' %}"></script>
   <script>
-    history.replaceState({}, document.title, window.location.pathname);
+    {#history.replaceState({}, document.title, window.location.pathname);#}
+    var newParams = '';
+    var cleanURL = window.location.protocol + "//" + window.location.host + window.location.pathname + newParams;
+    window.history.replaceState({}, document.title, cleanURL);
+
     var mapData ={{ results|safe }};
-    document.addEventListener('DOMContentLoaded', function (){
+    document.addEventListener('DOMContentLoaded', function () {
       console.log(mapData)
       initEcharts(mapData)
-    })
+    });
   </script>
 {% endblock %}
 </body>

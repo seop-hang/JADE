@@ -140,11 +140,33 @@ function initEcharts(mapData) {
             }
           },
 
+          selectedMode: 'single',
+
           data: mapData,
+
+          events: {
+            'click': function (params) {
+              window.location.href = "www.baidu.com"
+              console.log("okkk")
+              console.log(params);
+            }
+          }
         }
       ]
     };
 
     myChart.setOption(option);
+    myChart.on('click', function (params) {
+      if (params.componentType === 'series' && params.seriesType === 'map') {
+        var searchParams = new URLSearchParams(window.location.search);
+        var thisSolution=searchParams.get('solution')!== null ? searchParams.get('solution') : '';
+        var thisArticle=searchParams.get('article38')!== null ? searchParams.get('article38') : '';
+        var thisDebut=searchParams.get('annee_debut')!== null ? searchParams.get('annee_debut') : '';
+        var thisEnd=searchParams.get('annee_end')!== null ? searchParams.get('annee_end') : '';
+        var thisDep=params.name;
+        window.location.href='/table/?solution='+thisSolution+'&article38='+thisArticle+'&annee_debut='+thisDebut
+          +'&annee_end='+thisEnd+'&nom_dep='+thisDep
+      }
+    })
   });
 }

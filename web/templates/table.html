@@ -51,8 +51,17 @@
               </select>
             </div>
             <div class="mb-3 form-group">
-              <label for="annee_field" class="form-label">{{ form.annee_election.label }}</label>
-              <select class="form-control" id="annee_field" name="annee_election">
+              <label for="annee_debut_field" class="form-label">{{ form.annee_debut.label }}</label>
+              <select class="form-control" id="annee_debut_field" name="annee_debut">
+                <option value=""></option>
+                {% for value in possible_annee_values %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 form-group">
+              <label for="annee_end_field" class="form-label">{{ form.annee_end.label }}</label>
+              <select class="form-control" id="annee_end_field" name="annee_end">
                 <option value=""></option>
                 {% for value in possible_annee_values %}
                   <option value="{{ value }}">{{ value }}</option>
@@ -132,7 +141,8 @@
         </li>
         <li class="page-item">
           <button class="page-link"
-             onclick="changePage({{ decisions.previous_page_number }}); return false;">Previous</button>
+                  onclick="changePage({{ decisions.previous_page_number }}); return false;">Previous
+          </button>
         </li>
       {% else %}
         <li class="page-item disabled">
@@ -148,11 +158,13 @@
       {% if decisions.has_next %}
         <li class="page-item">
           <button class="page-link"
-             onclick="changePage({{ decisions.next_page_number }}); return false;">Next</button>
+                  onclick="changePage({{ decisions.next_page_number }}); return false;">Next
+          </button>
         </li>
         <li class="page-item">
           <button class="page-link"
-             onclick="changePage({{ decisions.paginator.num_pages }}); return false;">Last &raquo;</button>
+                  onclick="changePage({{ decisions.paginator.num_pages }}); return false;">Last &raquo;
+          </button>
         </li>
       {% else %}
         <li class="page-item disabled">

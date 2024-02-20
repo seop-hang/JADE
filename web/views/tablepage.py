@@ -11,7 +11,8 @@ class DecisionFilterForm(forms.Form):
     """
     solution = forms.CharField(label="Solution", max_length=100, required=False)
     article38 = forms.CharField(label="Article38", max_length=100, required=False)
-    annee_election = forms.IntegerField(label="Année d'élection", required=False)
+    annee_debut = forms.IntegerField(label="Début de la période", required=False)
+    annee_end = forms.IntegerField(label="Fin de la période", required=False)
     nom_dep = forms.CharField(label="Nom du département", max_length=100, required=False)
 
     def __init__(self, *args, **kwargs):
@@ -42,6 +43,10 @@ def table_render(request):
     # Applique le filtre
     form = DecisionFilterForm(data=request.GET)
     filter_dict = {key: value for key, value in request.GET.items() if value and key != "page"}
+    if "annee_debut" in filter_dict:
+        filter_dict["annee_election__gte"] = filter_dict.pop("annee_debut")
+    if "annee_end" in filter_dict:
+        filter_dict["annee_election__lte"] = filter_dict.pop("annee_end")
     decisions = decisions.filter(**filter_dict)
     # Pagination
     decisions_per_page = 8
