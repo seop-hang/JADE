@@ -14,52 +14,74 @@
 <body>
 <div id="basecontainer" class="row">
   <div id="navigation" class="col col-2">
-    
+
     <div id="logodiv">
       <!-- <img id="logopic" src="{% static 'image/logophoto.png' %}" alt="logo"> -->
       <p id="logotitle">JADE</p>
     </div>
-    
+
     <div id="navbar">
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <button class="nav-link {% if active_button == 'home' %}active{% endif %} d-flex align-items-center ms-2" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
-                  type="button" role="tab" aria-controls="v-pills-home" aria-selected="{% if active_button == 'home' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip"
+          <button class="nav-link {% if active_button == 'home' %}active{% endif %} d-flex align-items-center ms-2"
+                  id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+                  type="button" role="tab" aria-controls="v-pills-home"
+                  aria-selected="{% if active_button == 'home' %}true{% else %}false{% endif %}"
+                  onclick="switchPage(this)" data-bs-toggle="tooltip"
                   data-bs-placement="right" title="Accueil">
-                  <img src="{% static 'image/home.png' %}" alt="Home Icon" class="icon me-2">
-                  <span class="d-none d-lg-inline">Accueil</span>
+            <img src="{% static 'image/home.png' %}" alt="Home Icon" class="icon me-2">
+            <span class="d-none d-lg-inline">Accueil</span>
           </button>
-          <button class="nav-link {% if active_button == 'table' %}active{% endif %} d-flex align-items-center ms-2" id="v-pills-table-tab" data-bs-toggle="pill" data-bs-target="#v-pills-table"
-                  type="button" role="tab" aria-controls="v-pills-table" aria-selected="{% if active_button == 'table' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip"
+          <button class="nav-link {% if active_button == 'table' %}active{% endif %} d-flex align-items-center ms-2"
+                  id="v-pills-table-tab" data-bs-toggle="pill" data-bs-target="#v-pills-table"
+                  type="button" role="tab" aria-controls="v-pills-table"
+                  aria-selected="{% if active_button == 'table' %}true{% else %}false{% endif %}"
+                  onclick="switchPage(this)" data-bs-toggle="tooltip"
                   data-bs-placement="right" title="Le tableau global des données">
-                  <img src="{% static 'image/table.png' %}" alt="Table Icon" class="icon me-2">
-                  <span class="d-none d-lg-inline">Tableau</span>
+            <img src="{% static 'image/table.png' %}" alt="Table Icon" class="icon me-2">
+            <span class="d-none d-lg-inline">Tableau</span>
           </button>
-          <button class="nav-link {% if active_button == 'map' %}active{% endif %} d-flex align-items-center ms-2" id="v-pills-map-tab" data-bs-toggle="pill" data-bs-target="#v-pills-map"
-                  type="button" role="tab" aria-controls="v-pills-map" aria-selected="{% if active_button == 'map' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip"
+          <button class="nav-link {% if active_button == 'map' %}active{% endif %} d-flex align-items-center ms-2"
+                  id="v-pills-map-tab" data-bs-toggle="pill" data-bs-target="#v-pills-map"
+                  type="button" role="tab" aria-controls="v-pills-map"
+                  aria-selected="{% if active_button == 'map' %}true{% else %}false{% endif %}"
+                  onclick="switchPage(this)" data-bs-toggle="tooltip"
                   data-bs-placement="right" title="La carte des départements">
-                  <img src="{% static 'image/map.png' %}" alt="Map Icon" class="icon me-2">
-                  <span class="d-none d-lg-inline">Départements</span>
+            <img src="{% static 'image/map.png' %}" alt="Map Icon" class="icon me-2">
+            <span class="d-none d-lg-inline">Départements</span>
           </button>
-          <button class="nav-link {% if active_button == 'circs' %}active{% endif %} d-flex align-items-center ms-2" id="v-pills-maps-tab" data-bs-toggle="pill" data-bs-target="#v-pills-maps"
-                  type="button" role="tab" aria-controls="v-pills-maps" aria-selected="{% if active_button == 'circs' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip"
+          <button class="nav-link {% if active_button == 'circs' %}active{% endif %} d-flex align-items-center ms-2"
+                  id="v-pills-maps-tab" data-bs-toggle="pill" data-bs-target="#v-pills-maps"
+                  type="button" role="tab" aria-controls="v-pills-maps"
+                  aria-selected="{% if active_button == 'circs' %}true{% else %}false{% endif %}"
+                  onclick="switchPage(this)" data-bs-toggle="tooltip"
                   data-bs-placement="right" title="Diagramme circulaire des circonscriptions">
-                  <img src="{% static 'image/chart-pie.png' %}" alt="Circs Icon" class="icon me-2">
-                  <span class="d-none d-lg-inline">Circonscriptions</span>
+            <img src="{% static 'image/chart-pie.png' %}" alt="Circs Icon" class="icon me-2">
+            <span class="d-none d-lg-inline">Circonscriptions</span>
           </button>
-          <button class="nav-link {% if active_button == 'statistics' %}active{% endif %} d-flex align-items-center ms-2" id="v-pills-statistics-tab" data-bs-toggle="pill" data-bs-target="#v-pills-statistics"
-                  type="button" role="tab" aria-controls="v-pills-statistics" aria-selected="{% if active_button == 'statistics' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip"
-                  data-bs-placement="right" title="Les statistiques globales des données">
-                  <img src="{% static 'image/chart1.png' %}" alt="Stats Icon" class="icon me-2">
-                  <span class="d-none d-lg-inline">Statistiques</span>
+          <button
+            class="nav-link {% if active_button == 'statistics' %}active{% endif %} d-flex align-items-center ms-2"
+            id="v-pills-statistics-tab" data-bs-toggle="pill" data-bs-target="#v-pills-statistics"
+            type="button" role="tab" aria-controls="v-pills-statistics"
+            aria-selected="{% if active_button == 'statistics' %}true{% else %}false{% endif %}"
+            onclick="switchPage(this)" data-bs-toggle="tooltip"
+            data-bs-placement="right" title="Les statistiques globales des données">
+            <img src="{% static 'image/chart1.png' %}" alt="Stats Icon" class="icon me-2">
+            <span class="d-none d-lg-inline">Statistiques</span>
           </button>
-          <button class="nav-link {% if active_button == 'mentions' %}active{% endif %} position-fixed bottom-0 start-0 p-2 text-primary" id="v-pills-mentions-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mentions"
-                  type="button" role="tab" aria-controls="v-pills-mentions" aria-selected="{% if active_button == 'mentions' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip">
-                  Mentions légales
-          </button>
+
+          {#        position-fixed bottom-0 start-0 p-2#}
         </div>
       </div>
     </div>
+
+    <button class="nav-link {% if active_button == 'mentions' %}active{% endif %} flex-column nav-pills me-3"
+            id="v-pills-mentions-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mentions"
+            type="button" role="tab" aria-controls="v-pills-mentions"
+            aria-selected="{% if active_button == 'mentions' %}true{% else %}false{% endif %}"
+            onclick="switchPage(this)" data-bs-toggle="tooltip">
+      Mentions légales
+    </button>
   </div>
   <div id="mainContent" class="col col-10">
     {% block content %}{% endblock %}
