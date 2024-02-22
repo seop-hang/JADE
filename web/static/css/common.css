@@ -39,7 +39,7 @@ html, body {
   height: 80px;
   font-family:Verdana;
   font-weight: bolder;
-  font-size: larger;
+  font-size: x-large;
   /*font-family: Lucida Sans Unicode, Verdana;*/
 }
 
@@ -59,8 +59,13 @@ html, body {
   color: #ffffff;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s ease; /* Ajout de la transition */
 }
 
+.nav-link:hover {
+  background-color: #007bff; /* Couleur au survol */
+  color: #fff;
+}
 .nav-pills .nav-link.active{
   background-color:rgba(0,0,0,.125);
 }
@@ -78,4 +83,15 @@ html, body {
   width: 20px; 
   height: 20px;
   margin-right: 8px; 
+}
+
+#legal-notice a {
+  color: #fff;
+  text-decoration: none;
+  font-size: small;
+  transition: color 0.3s ease; /* Ajout de la transition */
+}
+
+#legal-notice a:hover {
+  color: #007bff; /* Couleur au survol */
 }

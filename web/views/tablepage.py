@@ -10,7 +10,7 @@ class DecisionFilterForm(forms.Form):
     Formulaire de filtre pour les décisions.
     """
     solution = forms.CharField(label="Solution", max_length=100, required=False)
-    article38 = forms.CharField(label="Article38", max_length=100, required=False)
+    article38 = forms.CharField(label="Article 38", max_length=100, required=False)
     annee_debut = forms.IntegerField(label="Début de la période", required=False)
     annee_end = forms.IntegerField(label="Fin de la période", required=False)
     nom_dep = forms.CharField(label="Nom du département", max_length=100, required=False)

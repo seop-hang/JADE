@@ -28,5 +28,8 @@ function switchPage(button) {
     case "v-pills-statistics-tab":
       window.location.href = "/statistics/";
       break;
+    case "v-pills-mentions-tab":
+      window.location.href = "/mentions/"; 
+      break;
   }
 }

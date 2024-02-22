@@ -1,0 +1,28 @@
+{% extends 'common.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% block content %}
+    <div class="section-container" id = "intro">
+        <h3>Mentions légales</h3>
+        <br>
+        <p>
+            <strong>Mentions légales et droits d'auteur :</strong><br>
+            Cette page web a été créée en 2024 par deux étudiants, Xuetao DU et Benan TOPRAKKALE, inscrits au sein du programme du master 2 Sciences du langage - parcours Industries de la langue. La réalisation de ce projet s'inscrit dans le cadre de l'orientation professionnelle, en collaboration avec le projet JADE, sous la tutelle de Thomas LEBARBE.
+            <br>
+
+            <strong>Droits d'auteur et l'utilisation :</strong><br>        
+            Les droits d'auteur de cette page et de son contenu sont détenus par Xuetao DU et Benan TOPRAKKALE.
+            Après la livraison du projet, toute personne autorisée par les responsables du projet JADE est libre de reproduire, distribuer, communiquer ou modifier le contenu, dans le respect des droits d'auteur et à condition de créditer les auteurs d'origine.         
+        </p>
+    </div>
+    
+  {% endblock %}
+</head>
+<body>

@@ -143,7 +143,6 @@ function initEcharts(mapData) {
           selectedMode: 'single',
 
           data: mapData,
-
           events: {
             'click': function (params) {
               window.location.href = "www.baidu.com"
@@ -155,15 +154,19 @@ function initEcharts(mapData) {
       ]
     };
 
+    // Appliquer les options à la carte ECharts
     myChart.setOption(option);
+    // Gestion de l'événement de clic sur la carte
     myChart.on('click', function (params) {
       if (params.componentType === 'series' && params.seriesType === 'map') {
+        // Récupération des paramètres de recherche dans l'URL
         var searchParams = new URLSearchParams(window.location.search);
         var thisSolution=searchParams.get('solution')!== null ? searchParams.get('solution') : '';
         var thisArticle=searchParams.get('article38')!== null ? searchParams.get('article38') : '';
         var thisDebut=searchParams.get('annee_debut')!== null ? searchParams.get('annee_debut') : '';
         var thisEnd=searchParams.get('annee_end')!== null ? searchParams.get('annee_end') : '';
         var thisDep=params.name;
+        // Redirection vers la page du tableau avec les filtres sélectionnés
         window.location.href='/table/?solution='+thisSolution+'&article38='+thisArticle+'&annee_debut='+thisDebut
           +'&annee_end='+thisEnd+'&nom_dep='+thisDep
       }

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import homepage, tablepage, statisticspage, mappage, circspage
+from web.views import homepage, tablepage, statisticspage, mappage, circspage, mentionpage
 from web.views import database_creater
 
 urlpatterns = [
@@ -35,5 +35,7 @@ urlpatterns = [
 
     path('circonscriptions/', circspage.circs_render),
 
-    path('statistics/', statisticspage.statistics_render)
+    path('statistics/', statisticspage.statistics_render),
+
+    path('mentions/', mentionpage.mention_render),
 ]

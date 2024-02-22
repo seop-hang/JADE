@@ -57,39 +57,53 @@
       </div>
     </div>
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-      <div class="section-container">
+      <div class="section-container" id = "intro">
         <h2>Guide d'utilisateur</h2>
         <p>
           Bienvenue sur la page, structurée en 5 sections principales : Accueil, Tableau, Départements, Circonscriptions et Statistiques.<br>
+          <br>
           Explorez le contenu de chaque section :
         </p>
       
         <ul>
           <li>
             <strong>Tableau :</strong><br>
-            Cette section présente des données électorales extraites d'un fichier CSV ainsi que du corpus XML. Les colonnes incluent le numéro de décision, les solutions adoptées, l'indication de l'article 38, la date de la décision, l'année d'élection, le département, les circonscriptions, le nombre de votes exprimés, le nombre de votants, le nombre d'inscrits, l'écart de votes, et des liens vers les décisions.<br>
-            En haut à droite du titre "Tableau des décisions", un bouton de filtrage vous permet de choisir les critères pour visualiser les données. Vous pouvez filtrer en fonction de la solution, de l'article 38, de l'année d'élection et/ou d'un département spécifique. Il est possible de sélectionner plusieurs critères simultanément. Par exemple, si vous souhaitez visualiser les données du département "Paris" après l'élection de 2007 qui ont été rejetées, vous pouvez le faire en sélectionnant ces critères et en cliquant sur "Valider".
-          </li>
-          <br>
-          <div class="description-images-container">
-            <img src="{% static 'image/ss1.png' %}" alt="Image de description 1" class="description-image">
-            <div class="desc-img-cont">
-              <img src="{% static 'image/ss2.png' %}" alt="Image de description 2" class="description-image small-image">
-              <img src="{% static 'image/ss3.png' %}" alt="Image de description 3" class="description-image small-image">
+            Cette section présente des données électorales extraites d'un fichier CSV ainsi que du corpus XML. Les colonnes comprennent le numéro de décision, les solutions adoptées, l'indication de l'article 38, la date de la décision, l'année d'élection, le département, les circonscriptions, le nombre de votes exprimés, le nombre de votants, le nombre d'inscrits, l'écart de votes, et des boutons menant aux liens des décisions.
+            <br>
+            En haut à droite du titre "Tableau des Décisions", un bouton de filtrage vous permet de choisir les critères pour visualiser les données. Vous pouvez filtrer en fonction de la solution, de l'article 38, d'un département spécifique et pour une période donnée (les années présentées sur le système de filtrage sont les années où il y a eu des élections, soit chaque 5 ans). Si vous souhaitez voir les données d’une année spécifique, il suffit de choisir la même année pour le début et la fin de la période. Il est possible de sélectionner plusieurs critères simultanément.
+            <br>
+            Par exemple, si vous souhaitez visualiser les données du département "Paris" après l'élection de 2007 qui ont été rejetées, vous pouvez le faire en sélectionnant ces critères et en cliquant sur "Valider".
+            <br>
+            <div class="description-images-container">
+              <img src="{% static 'image/ss1.png' %}" alt="Image de description 1" class="description-image">
+              <div class="desc-img-cont">
+                <img src="{% static 'image/ss2.png' %}" alt="Image de description 2" class="description-image small-image">
+                <img src="{% static 'image/ss3.png' %}" alt="Image de description 3" class="description-image small-image">
+              </div>
             </div>
-          </div>
+          </li>
           
           <li>
             <strong>Départements :</strong><br>
-            Cette section offre une visualisation cartographique des décisions, permettant d'explorer la carte de la France et de découvrir les décisions prises dans chaque département en survolant la souris. De plus, l'application de filtres est possible en choisissant le type de solution et/ou l'indication de l'article 38. La période peut également être spécifiée en sélectionnant le début et la fin de la période. Ces dates sont disponibles pour chaque année électorale (tous les 5 ans), et il est possible d'appliquer plusieurs critères simultanément. Il suffit de cliquer sur le bouton "Filtrer" après avoir fait vos sélections.
+            Cette section offre une visualisation cartographique des décisions, permettant d'explorer la carte de la France et de découvrir les décisions prises dans chaque département en survolant la souris. Vous pouvez appliquer des filtres en choisissant le type de solution et/ou l'indication de l'article 38. La période peut également être spécifiée en sélectionnant le début et la fin de la période, disponible pour chaque année électorale (tous les 5 ans). Vous avez la possibilité d'appliquer plusieurs critères simultanément en cliquant sur le bouton "Filtrer" après avoir fait vos sélections.
+            <br>
+            De plus, vous pouvez cliquer sur les départements après avoir précisé vos critères et cliqué sur "Filtrer". Cela vous redirigera vers la page du tableau, vous présentant le département que vous avez sélectionné avec les filtres que vous avez précisés. 
+            <br>
+            Par exemple, si vous souhaitez voir la solution « inéligibilité » entre 1997 et 2017 sur la carte, vous choisissez ces filtres de la manière décrite et cliquez sur "Filtrer". Après avoir sélectionné vos critères, survolez la carte pour voir les détails sur les solutions dans les départements. Si vous souhaitez obtenir plus de détails sur un département spécifique, cliquez simplement sur le département concerné pour être redirigé vers le tableau avec vos critères définis.
+            <br>
+            <div class="description-images-container">
+              <img src="{% static 'image/ss4.png' %}" alt="Image de description 4" class="description-image">
+              <div class="desc-img-cont">
+                <img src="{% static 'image/ss5.png' %}" alt="Image de description 5" class="description-image small-image">
+                <img src="{% static 'image/ss6.png' %}" alt="Image de description 6" class="description-image small-image">
+              </div>
+            </div>
           </li>
-          <br>
-          
           <li>
             <strong>Circonscriptions :</strong><br>
             Dans cette section, une visualisation graphique sous forme de diagramme illustre les décisions en fonction des circonscriptions des départements. Il vous suffit de choisir le département que vous souhaitez visualiser dans la liste "Départements". Il est également possible de sélectionner une année d'élection spécifique. Il suffit de cliquer sur le bouton "Filtrer" après avoir fait vos sélections.
+            <br>
           </li>
-          <br>
           
           <li>
             <strong>Statistiques :</strong><br>

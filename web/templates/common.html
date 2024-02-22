@@ -14,10 +14,12 @@
 <body>
 <div id="basecontainer" class="row">
   <div id="navigation" class="col col-2">
+    
     <div id="logodiv">
-      <img id="logopic" src="{% static 'image/logophoto.png' %}" alt="logo">
+      <!-- <img id="logopic" src="{% static 'image/logophoto.png' %}" alt="logo"> -->
       <p id="logotitle">JADE</p>
     </div>
+    
     <div id="navbar">
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -50,6 +52,10 @@
                   data-bs-placement="right" title="Les statistiques globales des données">
                   <img src="{% static 'image/chart1.png' %}" alt="Stats Icon" class="icon me-2">
                   <span class="d-none d-lg-inline">Statistiques</span>
+          </button>
+          <button class="nav-link {% if active_button == 'mentions' %}active{% endif %} position-fixed bottom-0 start-0 p-2 text-primary" id="v-pills-mentions-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mentions"
+                  type="button" role="tab" aria-controls="v-pills-mentions" aria-selected="{% if active_button == 'mentions' %}true{% else %}false{% endif %}" onclick="switchPage(this)" data-bs-toggle="tooltip">
+                  Mentions légales
           </button>
         </div>
       </div>
