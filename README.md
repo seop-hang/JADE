@@ -10,9 +10,9 @@ Les scripts de ce projet ont été développés en Python, en utilisant le frame
 Assurez-vous que Python est installé sur votre système. Le projet JADE a été développé et testé avec Python 3.6.
 
 #### Installation de Django:
-Pour exécuter les scripts du projet JADE, il est nécessaire d'installer le framework Django. Exécutez la commande suivante :
+Pour exécuter les scripts du projet JADE, utilisez le fichier requirements.txt en exécutant la commande suivante :
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
 
 ### FICHIERS ET SCRIPTS
